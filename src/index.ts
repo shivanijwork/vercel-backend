@@ -39,18 +39,39 @@
 
 
 // Connections and Listeners
+
+
+//2nd base
+
+// import app from "./app.js";
+// import { connectToDatabase, disconnectFromDatabase } from "./db/connection.js";
+// import { config } from 'dotenv'; // Import the dotenv package to load environment variables
+// config(); // Load environment variables from .env file
+
+// app.get("/", (req, res) => {
+//   res.send("Hello from the backend!");
+// });
+
+// const PORT = process.env.PORT || 5000;
+
+// connectToDatabase().then(() => {
+//     app.listen(PORT, () => console.log(`Server Open & connected to database check on port ${PORT}`)); // Start the server on port 5000 and log a message
+// }).catch(err => console.log(err));
+
+
+
+//3rd base
+
+
+// Connections and Listeners
 import app from "./app.js";
 import { connectToDatabase, disconnectFromDatabase } from "./db/connection.js";
-import { config } from 'dotenv'; // Import the dotenv package to load environment variables
-config(); // Load environment variables from .env file
-
-app.get("/", (req, res) => {
-  res.send("Hello from the backend!");
-});
+import { config } from 'dotenv';
+config();
 
 const PORT = process.env.PORT || 5000;
 
 connectToDatabase().then(() => {
-    app.listen(PORT, () => console.log(`Server Open & connected to database check on port ${PORT}`)); // Start the server on port 5000 and log a message
+    app.listen(PORT, () => console.log(`Server Open & connected to database check on port ${PORT}`));
 }).catch(err => console.log(err));
 
