@@ -37,14 +37,16 @@
 // app.use(express.json());
 
 
-app.get("/", (req, res) => {
-  res.send("Hello from the backend!");
-});
+
 // Connections and Listeners
 import app from "./app.js";
 import { connectToDatabase, disconnectFromDatabase } from "./db/connection.js";
 import { config } from 'dotenv'; // Import the dotenv package to load environment variables
 config(); // Load environment variables from .env file
+
+app.get("/", (req, res) => {
+  res.send("Hello from the backend!");
+});
 
 const PORT = process.env.PORT || 5000;
 
