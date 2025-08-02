@@ -9,16 +9,17 @@ import appRouter from './routes/index.js';
 import cookieParser from 'cookie-parser';
 
 import cors from 'cors'; // Import custom CORS middleware
+import path from "path";
 
 config(); // Load environment variables from .env file
 
 const app = express(); // Create an Express application instance
-
+const __dirname = path.resolve();
 
 
 // Middlewares
 
-app.use(cors({origin:"http://localhost:5173", credentials:true})); // Enable CORS for the frontend URL and allow credentials
+app.use(cors({ origin: "http://localhost:5173", credentials: true })); // Enable CORS for the frontend URL and allow credentials
 
 app.use(express.json());
 
@@ -36,13 +37,18 @@ if (process.env.NODE_ENV !== "production") {
 
 app.use("/api/v1", appRouter);
 
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get('*', (_, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+});
+
 
 
 export default app; // Export the app instance for use in other modules
 
 
 
-// // 
+// //
 // import express from 'express';
 // import { config } from 'dotenv'
 // import morgan from 'morgan';

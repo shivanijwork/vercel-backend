@@ -46,14 +46,15 @@
 import app from "./app.js";
 import { connectToDatabase, disconnectFromDatabase } from "./db/connection.js";
 import { config } from 'dotenv'; // Import the dotenv package to load environment variables
+
 config(); // Load environment variables from .env file
 
-app.get("/", (req, res) => {
-  res.send("Hello from the backend!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello from the backend!");
+// });
 
 app.post("/hello", (req, res, next) => {
-  console.log(req.body.name); // Log the request body to the console
+  // console.log(req.body.name); // Log the request body to the console
   // This is a route handler for POST requests to the "/hello" endpoint
   return res.send("Hello World!"); // Send a response with the text "Hello World!"
 });
@@ -61,6 +62,7 @@ app.post("/hello", (req, res, next) => {
 
 
 const PORT = process.env.PORT || 5000;
+
 
 connectToDatabase().then(() => {
     app.listen(PORT, () => console.log(`Server Open & connected to database check on port ${PORT}`)); // Start the server on port 5000 and log a message

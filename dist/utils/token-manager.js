@@ -10,7 +10,7 @@ export const verifyToken = async (req, res, next) => {
     if (!token || token.trim() === "") {
         return res.status(401).json({ message: "Token Not Received" });
     }
-    console.log(token);
+    // console.log(token);
     //token verfication
     return new Promise((resolve, reject) => {
         return jwt.verify(token, process.env.JWT_SECRET, (err, success) => {

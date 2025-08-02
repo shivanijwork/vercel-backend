@@ -96,7 +96,7 @@ export const verifyUser = async (req, res, next) => {
         if (!user) {
             return res.status(401).send("User not registered OR Token malfunctioned");
         }
-        console.log(user._id.toString(), res.locals.jwtData.id);
+        // console.log(user._id.toString(), res.locals.jwtData.id);
         if (user._id.toString() !== res.locals.jwtData.id) {
             return res.status(401).send("Permissions didn't match");
         }
@@ -117,7 +117,7 @@ export const userLogout = async (req, res, next) => {
         if (!user) {
             return res.status(401).send("User not registered OR Token malfunctioned");
         }
-        console.log(user._id.toString(), res.locals.jwtData.id);
+        // console.log(user._id.toString(), res.locals.jwtData.id);
         if (user._id.toString() !== res.locals.jwtData.id) {
             return res.status(401).send("Permissions didn't match");
         }
