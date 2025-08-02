@@ -5,6 +5,7 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
+    "stage":"npx tsc && git status && git add .",
     "dev": "nodemon -q backend/dist/index.js",
     "build": "npx tsc && npm install && npm install --prefix frontend && npm run build --prefix frontend",
     "start": "nodemon backend/dist/index.ts"
